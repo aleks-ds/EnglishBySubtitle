@@ -1,0 +1,70 @@
+.slider {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    box-sizing: border-box;
+    height: 100%;
+    width: 100%;
+}
+
+.block_h1 {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
+    height: 30%;
+    width: 100%;
+}
+
+h1, h2 {
+    color: white;
+    text-shadow: -1px -1px 0 black, /* Top-left contour */
+    1px -1px 0 black, /*Top-right contour*/
+    -1px 1px 0 black, /*Bottom-left contour*/
+    1px 1px 0 black; /*Bottom- right contour*/
+}
+
+.center_content_block {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    box-sizing: border-box;
+    height: 100%;
+    width: 40%;
+}
+
+.block_content {
+    height: 70%;
+    width: 40%;
+    margin: 0 0 15px 0;
+    background-color: rgba(255, 255, 255, 0.3);
+    border: 1px solid black;
+    /*position: relative;*/
+    overflow: hidden;
+}
+
+.slide_image.active {
+    opacity: 1;
+}
+
+.slider_dots {
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    box-sizing: border-box;
+    width: 100%;
+}
+
+    .slider_dots .dot {
+        width: 10px;
+        height: 10px;
+        border-radius: 50%;
+        margin: 0 10px 50px;
+        background-color: white;
+        border: 1px solid black;
+        cursor: pointer;
+    }
+
+        .slider_dots .dot.active {
+            background-color: #000;
+        }

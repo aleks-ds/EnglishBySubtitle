@@ -1,0 +1,46 @@
+﻿@{
+    ViewBag.Title = "Log in EBS";
+    Layout = "_Layout";
+}
+
+@section Styles {
+    <link rel="stylesheet" href="~/css/login.css">
+}
+
+@section Scripts {
+    <script src="~/js/login.js"></script>
+}
+
+
+<div class="container">
+    <div class="form_logo">
+        <img src="#" alt="Place_for_Logo">
+    </div>
+    <div class="form_h1">
+        <h1>@ViewBag.Title</h1>
+    </div>
+    <form class="form" action="/login" method="post">
+        <div class="form_email">
+            <label for="email"></label>
+            <input class="fields" type="email" id="email" name="email" required placeholder="Email address">
+        </div>
+        <div class="form_password">
+            <label for="password"></label>
+            <input class="fields" type="password" id="password" name="password" required placeholder="Password">
+        </div>
+        <div class="form_remember">
+            <input type="checkbox" id="remember-me" name="remember-me">
+            <label for="remember-me">Remember email address</label>
+        </div>
+        <div class="form_button">
+            <input class="button" type="submit" value="Next">
+        </div>
+    </form>
+    <div class="form_forgot">
+        <p><a class="text_link" href="@Url.Action("Signup", "Home")">Forgot password?</a></p>
+    </div>
+    <div class="form_text">
+        <p>Not a EBS member?</p>
+        <p><a class="text_link" href="@Url.Action("Signup", "Home")">Sign up here</a></p>
+    </div>
+</div>

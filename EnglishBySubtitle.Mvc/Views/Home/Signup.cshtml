@@ -1,0 +1,39 @@
+﻿@{
+    ViewBag.Title = "Sign up";
+}
+
+@section Styles {
+    <link rel="stylesheet" href="~/css/signup.css">
+}
+
+@section Styles2 {
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+}
+
+@section Scripts {
+    <script src="~/js/signup.js"></script>
+}
+
+<div class="signup_container">
+    <div class="signup_logo">
+        <img src="#" alt="Place_for_Logo">
+    </div>
+    <div class="signup_h2">
+        <h2>Registration Form</h2>
+    </div>
+    <form class="signup_form" action="@Url.Action("Submit", "Registration")" method="post">
+        <input class="signup_input" type="text" id="firstName" name="firstName" required placeholder="First name">
+        <input class="signup_input" type="text" id="lastName" name="lastName" required placeholder="Last name">
+        <input class="signup_input" type="number" id="age" name="age" required placeholder="Age">
+        <input class="signup_input" type="email" id="email" name="email" required placeholder="Email">
+        <div class="signup_password_container">
+            <div class="signup_eye_toggle">
+                <input class="signup_field_password" type="password" id="password" name="password" required placeholder="Password">
+                <i class="fas fa-eye password-toggle" id="form_eye_password_toggle" onclick="togglePasswordVisibility()"></i>
+            </div>         
+        </div>
+        <div class="signup_submit">
+            <input type="submit" value="Submit">
+        </div>
+    </form>       
+</div>

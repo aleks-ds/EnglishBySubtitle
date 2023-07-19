@@ -1,0 +1,54 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewData["Title"] - Learn English by subtitle</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="~/css/default-style.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/layout.css" asp-append-version="true" />
+    @RenderSection("Styles", required: false)
+    @RenderSection("Styles2", required: false)
+</head>
+<body>
+    <div class="header_main_conteiner">
+        <header>
+            <div class="logo">
+                <a href="@Url.Action("Index", "Home")" class="logo_link">
+                    <img class="logo_image" src="" alt="Place_for_Logo">
+                </a>
+            </div>
+            <div class="search">
+                <input class="search_input" type="text" id="InputTitle" placeholder="Enter movie title">
+            </div>
+            <div class="buttons">
+                <button onclick="window.location.href = '@Url.Action("Login", "Home")';" id="button_login" class="button_log_in">Log In</button>
+                <button onclick="window.location.href = '@Url.Action("Signup", "Home")';" class="button_sign_up">Sign Up</button>
+            </div>
+        </header>
+        <main>
+            @RenderBody()
+        </main>
+    </div>
+    <footer>
+        <nav class="menu">
+            <ul>
+                <li><a href="@Url.Action("Index", "Home")">Home</a></li>
+                <li><a href="#">About us</a></li>
+                <li><a href="#">Services</a></li>
+                <li><a href="#">Contacts</a></li>
+            </ul>
+        </nav>
+        <div class="social_networks">
+            <a href="https://www.facebook.com/" class="social_icon"><img src="/images/facebook.png" alt="Facebook"></a>
+            <a href="https://twitter.com/" class="social_icon"><img src="/images/twitter.png" alt="Twitter"></a>
+            <a href="https://www.instagram.com/" class="social_icon"><img src="/images/instagram.png" alt="Instagram"></a>
+        </div>
+    </footer>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+    <script src="/js/search.js"></script>
+</body>
+</html>

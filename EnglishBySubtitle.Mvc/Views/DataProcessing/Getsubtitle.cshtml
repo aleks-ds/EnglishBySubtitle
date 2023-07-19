@@ -1,0 +1,71 @@
+﻿@model Tuple<string[,], string[,]>
+
+@{
+    ViewBag.Title = "Search result lists of movies";
+    Layout = "_Layout";
+}
+
+@section Styles {
+    <link rel="stylesheet" href="~/css/getsubtitle.css">
+}
+
+<div class="search_result">
+    <div id="search_container_h2_table1" class="search_container_h2_table">
+        <h2 class="search_result_block_title">Search result</h2>
+        @{
+            if (Model.Item1.GetLength(0) == 0)
+            {
+                <table>
+                    <tr>
+                        <td class="td_left">By exact match</td>
+                        <td class="td_right">Subtitles not found</td>
+                    </tr>
+                </table>
+            }
+            else
+            {
+                <table>
+                    @for (int i = 0; i < Model.Item1.GetLength(0); i++)
+                    {
+                        <tr class="tr_active" onclick="myFunction(this)">
+                            <td class="td_left">@Model.Item1[i, 0]</td>
+                            <td class="td_right">@Model.Item1[i, 1]</td>
+                            @*<td>@Model.Item1[i, 2]</td>*@
+                            @*<td><input type="radio" name="radiobtn" value="@Model.Item1[i, 2]"></td>*@
+                        </tr>
+                    }
+                </table>
+            }
+        }
+    </div>
+    <div id="search_container_h2_table2" class="search_container_h2_table">
+        <h2 class="search_result_block_title">Similar titles</h2>
+        @{
+            if (Model.Item2.GetLength(0) == 0)
+            {
+                <table>
+                    <tr>
+                        <td class="td_left">Among similar titles</td>
+                        <td class="td_right">Subtitles not found</td>
+                    </tr>
+                </table>
+            }
+            else
+            {
+                <table>
+                    @for (int i = 0; i < Model.Item2.GetLength(0); i++)
+                    {
+                        <tr class="tr_active" onclick="myFunction(this)">
+                            <td class="td_left">@Model.Item2[i, 0]</td>
+                            <td class="td_right">@Model.Item2[i, 1]</td>
+                            @*<td>@Model.Item2[i, 2]</td>*@
+                            @*<td><input type="radio" name="radiobtn" value="@Model.Item2[i, 2]"></td>*@
+                        </tr>
+                    }
+                </table>
+            }
+        }
+    </div>
+</div>
+
+

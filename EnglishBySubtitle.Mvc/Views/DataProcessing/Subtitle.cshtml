@@ -1,0 +1,15 @@
+﻿@model List<string>
+
+@{
+    ViewBag.Title = "Subtitle";
+}
+
+<h2>Subtitles</h2>
+<div>
+    <pre>
+        @foreach (string line in Model)
+        {
+            @line.Replace("\n", "<br>") <br>
+        }
+    </pre>
+</div>

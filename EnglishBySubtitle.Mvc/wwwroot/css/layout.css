@@ -1,0 +1,177 @@
+body {
+    height: 100vh;
+    width: 100vw;
+}
+
+.header_main_conteiner {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    box-sizing: border-box;
+    height: 92%;
+    width: 100%;
+    background-image: url('/images/slide1.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    /*border: 5px solid yellow;*/
+}
+
+footer {
+    display: flex;
+    align-items: center;
+    box-sizing: border-box;
+    height: 8%;
+    width: 100%;
+    border-top: 1px solid black;
+}
+
+header {
+    display: flex;
+    align-items: center;
+    box-sizing: border-box;
+    height: 10%;
+    width: 100%;
+    overflow: hidden;
+    border-bottom: 1px solid grey;
+    background-color: rgba(0, 0, 0, 0.4);
+}
+
+main {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    box-sizing: border-box;
+    height: 100%;
+    width: 100%;
+    overflow: hidden;
+    /*border: 5px solid green;*/
+    margin: 0;
+    padding: 0;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-basis: 10%;
+}
+
+.logo_image {
+    width: 80%;
+    cursor: pointer;
+    border-radius: 5px;
+    color: white;
+    font-size: 16px;
+}
+
+.logo_link {
+    text-decoration: none; /* Убирает подчеркивание */
+}
+
+.search {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-basis: 75%;
+}
+
+.search_input {
+    width: 80%;
+    padding: 10px;
+    border-radius: 5px;
+    border: none;
+    font-size: 14px;
+    text-indent: 40px;
+    color: rgb(22, 22, 22);
+    background-image: url("/images/search.png");
+    background-size: 25px;
+    background-repeat: no-repeat;
+    background-position: 8px center;
+}
+
+.buttons {
+    display: flex;
+    align-items: center;
+    justify-content: left;
+    flex-basis: 15%;
+}
+
+    .buttons button {
+        width: 40%;
+        padding: 8px 0px;
+        border-radius: 5px;
+        font-size: 16px;
+        cursor: pointer;
+        border: none;
+        margin: 0px 10px 0px 0px;
+        transition: background-color 0.3s, color 0.3s;
+    }
+
+.button_log_in {
+    background: transparent;
+    color: white;
+}
+
+    .button_log_in:hover {
+        background-color: white;
+        color: black;
+    }
+
+        .button_log_in:hover ~ .button_sign_up {
+            background-color: transparent;
+            color: white;
+        }
+
+.menu {
+    flex-basis: 80%;
+}
+
+.social_networks {
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    flex-basis: 20%;
+}
+
+.menu ul {
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+.menu li {
+    margin: 0 50px 0px 50px;
+}
+
+.menu a {
+    display: block;
+    padding: 10px;
+    text-decoration: none;
+    color: black;
+    font-size: 16px;
+}
+
+    .menu a:hover {
+        background-color: #ddd;
+    }
+
+.social_icon {
+    margin: 7px 0px 0px 8px;
+}
+
+    .social_icon img {
+        width: 27px;
+        height: 27px;
+    }
+
+input /*[type="text"]*/ {
+    padding: 0 10px;
+}
+
+    input[type="submit"], i {
+        cursor: pointer;
+    }

@@ -1,0 +1,336 @@
+html, body {
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    width: 100vw;
+    overflow: hidden;
+}
+
+body {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    box-sizing: border-box;
+    overflow: hidden;
+    font-family: Arial, sans-serif;
+}
+
+.header_main_conteiner {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    box-sizing: border-box;
+    height: 92%;
+    width: 100%;
+    background-image: url('/images/slide1.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+}
+
+header {
+    display: flex;
+    align-items: center;
+    box-sizing: border-box;
+    height: 10%;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.4);
+    overflow: hidden;
+    border-bottom: 1px solid grey;
+}
+
+main {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    box-sizing: border-box;
+    height: 90%;
+    width: 100%;
+}
+
+footer {
+    display: flex;
+    align-items: center;
+    box-sizing: border-box;
+    bottom: 0;
+    height: 8%;
+    width: 100%;
+    border-top: 1px solid black;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-basis: 10%;
+}
+
+.logo_image {
+    width: 80%;
+    cursor: pointer;
+    border-radius: 5px;
+    color: white;
+    font-size: 16px;
+}
+
+.logo_link {
+    text-decoration: none; /* Убирает подчеркивание */
+}
+
+.search {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-basis: 75%;
+}
+
+.search_input {
+    width: 80%;
+    padding: 10px;
+    border-radius: 5px;
+    border: none;
+    font-size: 14px;
+    text-indent: 40px;
+    color: rgb(22, 22, 22);
+    background-image: url("/images/search.png");
+    background-size: 25px;
+    background-repeat: no-repeat;
+    background-position: 8px center;
+}
+
+.buttons {
+    display: flex;
+    align-items: center;
+    justify-content: left;
+    flex-basis: 15%;
+}
+
+    .buttons button {
+        width: 40%;
+        padding: 8px 0px;
+        border-radius: 5px;
+        font-size: 16px;
+        cursor: pointer;
+        border: none;
+        margin: 0px 10px 0px 0px;
+        transition: background-color 0.3s, color 0.3s;
+    }
+
+.button_log_in {
+    background: transparent;
+    color: white;
+}
+
+    .button_log_in:hover {
+        background-color: white;
+        color: black;
+    }
+
+        .button_log_in:hover ~ .button_sign_up {
+            background-color: transparent;
+            color: white;
+        }
+
+.slider {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    box-sizing: border-box;
+    height: 100%;
+    width: 100%;
+}
+
+.block_h1 {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
+    height: 30%;
+    width: 100%;
+}
+
+h1, h2 {
+    color: white;
+    text-shadow: -1px -1px 0 black, /* Top-left contour */
+    1px -1px 0 black, /*Top-right contour*/
+    -1px 1px 0 black, /*Bottom-left contour*/
+    1px 1px 0 black; /*Bottom- right contour*/
+}
+
+.center_content_block {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    box-sizing: border-box;
+    height: 100%;
+    width: 40%;
+}
+
+.block_content {
+    height: 70%;
+    width: 40%;
+    margin: 0 0 15px 0;
+    background-color: rgba(255, 255, 255, 0.3);
+    border: 1px solid black;
+    position: relative;
+    overflow: hidden;
+}
+
+.slide_image.active {
+    opacity: 1;
+}
+
+.slider_dots {
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    box-sizing: border-box;
+    width: 100%;
+}
+
+    .slider_dots .dot {
+        width: 10px;
+        height: 10px;
+        border-radius: 50%;
+        margin: 0 10px 50px;
+        background-color: white;
+        border: 1px solid black;
+        cursor: pointer;
+    }
+
+        .slider_dots .dot.active {
+            background-color: #000;
+        }
+
+.menu {
+    flex-basis: 80%;
+}
+
+.social_networks {
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    flex-basis: 20%;
+}
+
+.menu ul {
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+.menu li {
+    margin: 0 50px 0px 50px;
+}
+
+.menu a {
+    display: block;
+    padding: 10px;
+    text-decoration: none;
+    color: black;
+    font-size: 16px;
+}
+
+    .menu a:hover {
+        background-color: #ddd;
+    }
+
+.social_icon {
+    margin: 7px 0px 0px 8px;
+}
+
+    .social_icon img {
+        width: 27px;
+        height: 27px;
+    }
+
+/*  for Getsubtitle page view */
+.search_result {
+    display: flex;
+    align-items: stretch;
+    flex-direction: column;
+    box-sizing: border-box;
+    height: 100%;
+    width: auto;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.4);
+    margin: 100px 200px;
+    border: 2px solid white;
+}
+
+.search_container_h2_table {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    box-sizing: border-box;
+    width: 100%;
+    /*border: 15px solid green;*/
+}
+
+#search_container_h2_table1 {
+    border-bottom: 1px solid white;
+}
+
+#search_container_h2_table2 {
+    border-top: 2px solid white;
+    margin: 30px 0 0 0;
+}
+
+.search_result_block_title {
+    margin: 4px 0 0 0;
+}
+
+table {
+    width: 100%;
+    table-layout: fixed;
+}
+
+tr {
+    width: 100%;
+    height: 100%;
+    border: 1px solid grey;
+    /*border: 3px solid white;*/
+}
+
+td {
+    vertical-align: middle;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    max-width: 100%;
+    color: white;
+    text-shadow: -1px -1px 0 black, /* Top-left contour */
+    1px -1px 0 black, /*Top-right contour*/
+    -1px 1px 0 black, /*Bottom-left contour*/
+    1px 1px 0 black; /*Bottom- right contour*/
+    /*border: 3px solid green;*/
+}
+
+.td_left {
+    flex: 0 0 auto;
+    text-align: left;
+    padding-left: 100px;
+}
+
+.td_right {
+    flex: 1 0 0;
+    text-align: left;
+    padding-left: 50px;
+}
+
+.tr_active:hover {
+    background-color: lightgray;
+    cursor: pointer;
+}
+
+.search_container_h2_table::-webkit-scrollbar {
+    width: 8px;
+    background-color: rgba(0, 0, 0, 0.4);
+}
+
+.search_container_h2_table::-webkit-scrollbar-thumb {
+    background-color: rgba(255, 255, 255, 0.7);
+}
