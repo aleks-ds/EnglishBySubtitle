@@ -53,5 +53,5 @@ jobs:
         with:
           app-name: 'EnglishBySubtitle'
           slot-name: 'Production'
-          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_AA939EFBBB7B446FB0952968A7D3BE62 }}
+          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_1FC5E992F12744D8881DB028F536D730 }}
           package: .
