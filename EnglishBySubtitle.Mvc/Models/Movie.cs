@@ -4,5 +4,6 @@
     {
         public string InputTitle { get; set; }
         public string OutputSubtitle { get; set; }
+        public List<string> UniqueWords { get; set; }
     }
 }

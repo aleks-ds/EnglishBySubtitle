@@ -16,10 +16,12 @@
             if (Model.Item1.GetLength(0) == 0)
             {
                 <table>
-                    <tr>
-                        <td class="td_left">By exact match</td>
-                        <td class="td_right">Subtitles not found</td>
-                    </tr>
+                    <thed>
+                        <tr>
+                            <td class="td_left">By exact match</td>
+                            <td class="td_right">Subtitles not found</td>
+                        </tr>
+                    </thed>
                 </table>
             }
             else
@@ -27,11 +29,9 @@
                 <table>
                     @for (int i = 0; i < Model.Item1.GetLength(0); i++)
                     {
-                        <tr class="tr_active" onclick="myFunction(this)">
+                        <tr class="tr_active" data-idsubtitle="@Model.Item1[i, 3]" onclick="getSubtitleById(this)">
                             <td class="td_left">@Model.Item1[i, 0]</td>
                             <td class="td_right">@Model.Item1[i, 1]</td>
-                            @*<td>@Model.Item1[i, 2]</td>*@
-                            @*<td><input type="radio" name="radiobtn" value="@Model.Item1[i, 2]"></td>*@
                         </tr>
                     }
                 </table>
@@ -55,11 +55,9 @@
                 <table>
                     @for (int i = 0; i < Model.Item2.GetLength(0); i++)
                     {
-                        <tr class="tr_active" onclick="myFunction(this)">
+                        <tr class="tr_active" data-idsubtitle="@Model.Item2[i, 3]" onclick="getSubtitleById(this)">
                             <td class="td_left">@Model.Item2[i, 0]</td>
                             <td class="td_right">@Model.Item2[i, 1]</td>
-                            @*<td>@Model.Item2[i, 2]</td>*@
-                            @*<td><input type="radio" name="radiobtn" value="@Model.Item2[i, 2]"></td>*@
                         </tr>
                     }
                 </table>
@@ -67,5 +65,5 @@
         }
     </div>
 </div>
-
+<script src = "/js/getsubtitle.js"></script>
 

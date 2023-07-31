@@ -1,5 +1,6 @@
 ﻿using Newtonsoft.Json.Linq;
 using RestSharp;
+using System.Net;
 
 namespace EnglishBySubtitle.Mvc.Services
 {
@@ -16,13 +17,19 @@ namespace EnglishBySubtitle.Mvc.Services
         public OpenSubtitlesApi()
         {
             restClient = new RestClient(url);
-            var tokenRequest = new RestRequest("login", Method.Post);
-            tokenRequest.AddHeader("Content-Type", "application/json");
-            tokenRequest.AddHeader("Api-Key", apiKey);
-            tokenRequest.AddJsonBody(new { username = login, password });
-            var tokenResponse = restClient.Execute(tokenRequest, Method.Post);
-            CreatedAt = DateTime.Now;
-            Token = JObject.Parse(tokenResponse.Content)["token"].ToString();
+            if (string.IsNullOrEmpty(Token)) 
+            {
+                var tokenRequest = new RestRequest("login", Method.Post);
+                tokenRequest.AddHeader("Content-Type", "application/json");
+                tokenRequest.AddHeader("Api-Key", apiKey);
+                tokenRequest.AddJsonBody(new { username = login, password });
+                var tokenResponse = restClient.Execute(tokenRequest, Method.Post);
+                CreatedAt = DateTime.Now;
+                if (tokenResponse.StatusCode == HttpStatusCode.OK)
+                {
+                    Token = JObject.Parse(tokenResponse.Content)["token"].ToString();
+                }
+            }    
         }
     }
 }

@@ -1,0 +1,82 @@
+.container {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+    box-sizing: border-box;
+    height: 100%;
+    width: 100%;
+    margin: 0 0 150px 0;
+}
+
+h1, caption, tr, .result {
+    color: white;
+    text-shadow: 
+    -1px -1px 0 black, /*Top-left contour*/
+    1px -1px 0 black,  /*Top-right contour*/
+    -1px 1px 0 black,  /*Bottom-left contour*/
+    1px 1px 0 black;   /*Bottom- right contour*/
+}
+
+.result {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+    height: 10%;
+    width: 50%;
+    background-color: rgba(0, 0, 0, 0.4);
+}
+
+.result2 {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+    height: 50%;
+    width: 100%;
+    max-width: 50%;
+    overflow-y: auto;
+    background-color: rgba(0, 0, 0, 0.6);
+    border-bottom: 2px solid rgba(255, 255, 255, 0.5);
+    margin: 0 0 10px 0;
+    padding: 15px;
+}
+
+.result:hover, .tr_active:hover {
+    background-color: lightgray;
+    cursor: pointer;
+}
+
+#subtitles_field {
+    max-height: 100px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.5);
+    transition: max-height 0.3s ease;
+}
+
+.expandedSibtitleField {
+    max-height: none;
+}
+
+.expandedWordsField {
+    max-height: none;
+}
+
+table {
+    width: 100%;
+}
+
+#down_line {
+    border-bottom: 3px solid rgba(255, 255, 255, 0.5);
+}
+
+td {
+    text-align: center;
+}
+
+/* Additional class for JavaScript */
+.move_border {
+    border-top: 1px solid rgba(255, 255, 255, 0.5);
+    border-bottom: 2px solid rgba(255, 255, 255, 0.5);
+    background-color: rgba(0, 0, 0, 0.6);
+}

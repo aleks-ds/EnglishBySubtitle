@@ -1,0 +1,25 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+    box-sizing: border-box;
+    height: 100%;
+    width: 70%;
+    margin: 100px 150px 150px;
+    padding: 20px;
+    background-color: rgba(0, 0, 0, 0.6);
+    border: 2px solid rgba(255, 255, 255, 0.5);
+}
+
+h1, h2, h3, p {
+    color: white;
+    text-shadow: -1px -1px 0 black, /*Top-left contour*/
+    1px -1px 0 black, /*Top-right contour*/
+    -1px 1px 0 black, /*Bottom-left contour*/
+    1px 1px 0 black; /*Bottom- right contour*/
+}
+
+span {
+    font-size: 25px;
+}

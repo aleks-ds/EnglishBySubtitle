@@ -1,15 +1,44 @@
-﻿@model List<string>
+﻿@model Movie
 
 @{
-    ViewBag.Title = "Subtitle";
+    ViewBag.Title = "Subtitles & Unique words";
+    Layout = "_Layout";
 }
 
-<h2>Subtitles</h2>
-<div>
-    <pre>
-        @foreach (string line in Model)
-        {
-            @line.Replace("\n", "<br>") <br>
-        }
-    </pre>
+@section Styles {
+    <link rel="stylesheet" href="~/css/subtitle.css">
+}
+
+
+<div class="container" id="container">
+    <h1 class="h1">@Model.InputTitle</h1>
+    <div id="subtitles_field" class="result" data-toggle="toggle" onclick="toggleExpandSubtitleField()">Show Subtitles Text</div>
+    @*hide block*@
+    <div id="subtitles_field2" class="result2" style="display: none;">
+        <table>
+            <tbody>
+                <tr class="text">
+                    <td>@Model.OutputSubtitle</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    
+    <div id="words_field" class="result" data-toggle="toggle" onclick="toggleExpandWordsField()">Show Unique Words</div>
+    @*hide block*@   
+    <div id="words_field2" class="result2" style="display: none;">
+        <table>
+            <caption id="down_line" class="text">Unique words: @Model.UniqueWords.Count</caption>
+            <tbody>
+                @foreach (var item in Model.UniqueWords)
+                {
+                    <tr class="tr_active">
+                        <td class="td_left">@item</td>
+                        <td class="td_right">I will implement it later</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
 </div>
+<script src="/js/subtitle.js"></script>

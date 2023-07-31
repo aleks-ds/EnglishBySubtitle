@@ -1,6 +1,7 @@
 ﻿using EnglishBySubtitle.Mvc.Models;
 using Newtonsoft.Json.Linq;
 using RestSharp;
+using System.Net;
 using System.Text.RegularExpressions;
 
 namespace EnglishBySubtitle.Mvc.Services
@@ -24,53 +25,80 @@ namespace EnglishBySubtitle.Mvc.Services
             subtitlesRequest.AddParameter("query", model.InputTitle);
             subtitlesRequest.AddParameter("language", "en");
             var subtitlesResponse = authorization.restClient.Execute(subtitlesRequest, Method.Get);
-            JObject subtitlesJson = JObject.Parse(subtitlesResponse.Content);
-            //Console.WriteLine(subtitlesJson);
-            return (JArray)subtitlesJson["data"];
+            // Check on null
+            if (subtitlesResponse?.Content != null)
+            {
+                JObject subtitlesJson = JObject.Parse(subtitlesResponse.Content);
+                return (JArray)(subtitlesJson["data"] ?? new JArray());
+            }
+            throw new Exception();
+        }
+        public static JObject PostObjectRequest(ref OpenSubtitlesApi authorization, string idSubtitle)
+        {
+            var request = new RestRequest("download", Method.Post);
+            request.AddHeader("Content-Type", "application/json");
+            request.AddHeader("Accept", "application/json");
+            request.AddHeader("Api-Key", authorization.apiKey);
+            request.AddParameter("application/json", $"{{\n  \"file_id\": {idSubtitle}\n}}", ParameterType.RequestBody);
+            RestResponse response = authorization.restClient.Execute(request);
+            if(response?.Content != null)
+            {
+                JObject objectRequest = JObject.Parse(response.Content);
+                return (JObject)(objectRequest ?? new JObject());
+            }
+            else
+            {
+                throw new Exception();
+            }
         }
         public static string[,] ShowListOfExactMatchTitleMovies(Movie model, JArray subtitleData)
         {
             int amountMovies = 0;
             string title, language;
-
-            foreach (JObject subtitle in subtitleData.Cast<JObject>())
+            if (subtitleData != null && subtitleData.Count > 0)
             {
-                title = (string)subtitle["attributes"]["feature_details"]["title"];
-                language = (string)subtitle["attributes"]["language"];
-                if (title.IndexOf(model.InputTitle) != -1 && language == "en" && title.Length == model.InputTitle.Length)
-                    amountMovies++;
-            }
-
-            string[,] exactMatchTitle = new string[amountMovies, 4];
-            string movieName, url, idMovie;
-            int counter = 0;
-
-            foreach (JObject subtitle in subtitleData.Cast<JObject>())
-            {
-                title = (string)subtitle["attributes"]["feature_details"]["title"];
-                movieName = (string)subtitle["attributes"]["feature_details"]["movie_name"];
-                language = (string)subtitle["attributes"]["language"];
-                url = (string)subtitle["attributes"]["url"];
-                idMovie = (string)subtitle["attributes"]["files"][0]["file_id"];
-
-                if (title.IndexOf(model.InputTitle) != -1 && language == "en" && title.Length == model.InputTitle.Length)
+                foreach (JObject subtitle in subtitleData.Cast<JObject>())
                 {
-                    if (counter != amountMovies)
+                    title = (string)subtitle["attributes"]["feature_details"]["title"];
+                    language = (string)subtitle["attributes"]["language"];
+                    if (title.ToLower().IndexOf(model.InputTitle.ToLower()) != -1 && language == "en" && title.Length == model.InputTitle.Length)
+                        amountMovies++;
+                }
+
+                string[,] exactMatchTitle = new string[amountMovies, 4];
+                string movieName, url, idMovie;
+                int counter = 0;
+
+                foreach (JObject subtitle in subtitleData.Cast<JObject>())
+                {
+                    title = (string)subtitle["attributes"]["feature_details"]["title"];
+                    movieName = (string)subtitle["attributes"]["feature_details"]["movie_name"];
+                    language = (string)subtitle["attributes"]["language"];
+                    url = (string)subtitle["attributes"]["url"];
+                    idMovie = (string)subtitle["attributes"]["files"][0]["file_id"];
+
+                    if (title.ToLower().IndexOf(model.InputTitle.ToLower()) != -1 && language == "en" && title.Length == model.InputTitle.Length)
                     {
-                        exactMatchTitle[counter, 0] = title;
-                        exactMatchTitle[counter, 1] = movieName;
-                        exactMatchTitle[counter, 2] = url;
-                        exactMatchTitle[counter, 3] = idMovie;
-                        counter++;
-                    }
-                    else
-                    {
-                        break;
+                        if (counter != amountMovies)
+                        {
+                            exactMatchTitle[counter, 0] = title;
+                            exactMatchTitle[counter, 1] = movieName;
+                            exactMatchTitle[counter, 2] = url;
+                            exactMatchTitle[counter, 3] = idMovie;
+                            counter++;
+                        }
+                        else
+                        {
+                            break;
+                        }
                     }
                 }
+                return exactMatchTitle;
             }
-            
-            return exactMatchTitle;
+            else
+            {
+                return new string[,] { };
+            }           
         }
         public static string[,] ShowAuxiliaryListOfMovies(Movie model, JArray subtitleData)
         {
@@ -91,7 +119,7 @@ namespace EnglishBySubtitle.Mvc.Services
             string[,] exactMatchTitle = new string[amountMovies, 4];
             int counter = 0;
 
-            // put the object movie to two-dimensional array
+            // Put the object movie to two-dimensional array
             foreach (JObject subtitle in subtitleData.Cast<JObject>())
             {
                 title = (string)subtitle["attributes"]["feature_details"]["title"];
@@ -118,10 +146,14 @@ namespace EnglishBySubtitle.Mvc.Services
             }
             return exactMatchTitle;
         }
-        public static string GetTextFromSubtitle(string contentFromSubtitle)
+        public static async Task<string> GetTextFromSubtitle(JObject objectRequest)
         {
-            string[] subtitleLines = contentFromSubtitle.Split(new[] { "\r\n", "\r", "\n" }, StringSplitOptions.RemoveEmptyEntries);
-
+            string content;
+            using (HttpClient client = new())
+            {
+                content = await client.GetStringAsync((string)objectRequest["link"]);
+            }
+            string[] subtitleLines = content.Split(new[] { "\r\n", "\r", "\n" }, StringSplitOptions.RemoveEmptyEntries);
             string patternNum = @"^\D.*\D$";
             Regex regexNum = new(patternNum);
             string patternTeg = @"^(?:(?!<.*>).)*$";
@@ -129,38 +161,61 @@ namespace EnglishBySubtitle.Mvc.Services
             string text = "";
 
             List<string> listLine = new();
+            int indexStartSentence, indexEndSentence;
             foreach (string lineWithoutNumber in subtitleLines)
             {
                 if (regexNum.IsMatch(lineWithoutNumber) && regexTeg.IsMatch(lineWithoutNumber))
-                {
-                    listLine.Add(lineWithoutNumber);
-                    text += lineWithoutNumber;
+                {                    
+                    indexStartSentence = 0;
+                    indexEndSentence = 1;
+                    while (indexStartSentence < lineWithoutNumber.Length && !char.IsLetter(lineWithoutNumber[indexStartSentence]))
+                    {
+                        indexStartSentence++;
+                    }
+                    while (indexEndSentence < lineWithoutNumber.Length - 1 && !char.IsLetter(lineWithoutNumber[^indexEndSentence]))
+                    {
+                        indexEndSentence++;
+                    }
+                    if (indexEndSentence > 1)
+                        indexEndSentence--;
+                    int lastIndex = (lineWithoutNumber.Length - indexEndSentence + 1);
+
+
+                    string clearLine;
+                    if (text.Length != 0 && text[^2] == '.')
+                        clearLine = char.ToUpper(lineWithoutNumber[indexStartSentence..lastIndex][0]) + lineWithoutNumber[indexStartSentence..lastIndex][1..];
+                    else
+                        clearLine = lineWithoutNumber[indexStartSentence..lastIndex];
+
+                    Console.WriteLine("Оригинал: " + lineWithoutNumber);
+                    Console.WriteLine("Финальная: " + clearLine);
+                    Console.WriteLine();
+                    
+                    listLine.Add(clearLine);
+                    text += clearLine + " ";
                 }
             }
             return text;
         }
-        public static List<string> ShowListOfUniqueWordsOfMovie(string text)
+        public static List<string> ShowListOfUniqueWordsOfMovie(string textFromSubtitle)
         {
-            string[] words = text.Split(new[] { ' ', '.', ',', '!', '?', '-', ':', '"', '(', ')', '<', '>', '[', ']' }, StringSplitOptions.RemoveEmptyEntries);
-            for (int i = 0; i < words.Length; i++)
+            string[] uncleanedWords = textFromSubtitle.Split(' ', StringSplitOptions.RemoveEmptyEntries);            
+            for (int i = 0; i < uncleanedWords.Length; i++)
             {
-                words[i] = words[i].Trim('\'').ToLower();
+                uncleanedWords[i] = uncleanedWords[i].Trim(' ', '.', ',', '!', '?', '-', ':', ';', '"',
+                    '\'', '(', ')', '<', '>', '[', ']').ToLower();
             }
-
-            // Создание списка слов, которые встречаются только один раз
-            List<string> uniqueWords = words
-                .GroupBy(w => w)                     // Группировка слов по их значению
-                .Where(g => g.Count() == 1)          // Отбор групп, содержащих только одно слово
-                .Select(g => g.Key)                  // Выбор уникальных слов
-                .OrderBy(w => w)                     // сортировка слов по алфавиту
-                .ToList();
-
-            /*  Console.WriteLine(uniqueWords.Count);
-
-              foreach (string word in uniqueWords)
-              {
-                  Console.WriteLine(word);
-              }*/
+            string[] words = uncleanedWords.Distinct().ToArray();
+            Array.Sort(words);
+            List<string> uniqueWords = new();
+            List<string> uniqueNumbers = new();
+            foreach (string word in words) 
+            {
+                if(word.Length != 1 && char.IsLetter(word[0]))
+                    uniqueWords.Add(word);
+                else
+                    uniqueNumbers.Add(word);
+            }
             return uniqueWords;
         }
     }

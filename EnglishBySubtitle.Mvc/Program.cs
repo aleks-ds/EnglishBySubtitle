@@ -18,6 +18,10 @@ namespace EnglishBySubtitle.Mvc
                 // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
                 app.UseHsts();
             }
+            else
+            {
+                app.UseDeveloperExceptionPage(); // Show error page for development
+            }
 
             app.UseHttpsRedirection();
             app.UseStaticFiles();
@@ -25,6 +29,21 @@ namespace EnglishBySubtitle.Mvc
             app.UseRouting();
 
             app.UseAuthorization();
+
+            // Middleware для установки RequestId
+            app.Use(async (context, next) =>
+            {
+                // Generating a unique RequestId
+                var requestId = Guid.NewGuid().ToString();
+
+                // Setting RequestId in the request header
+                context.Request.Headers.Add("RequestId", requestId);
+
+                // Adding RequestId to the property HttpContext.RequestId
+                context.Request.HttpContext.Items["RequestId"] = requestId;
+
+                await next.Invoke();
+            });
 
             app.MapControllerRoute(
                 name: "default",

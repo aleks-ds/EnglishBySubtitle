@@ -45,7 +45,6 @@ main {
     height: 100%;
     width: 100%;
     overflow: hidden;
-    /*border: 5px solid green;*/
     margin: 0;
     padding: 0;
 }
@@ -168,7 +167,7 @@ main {
         height: 27px;
     }
 
-input /*[type="text"]*/ {
+input {
     padding: 0 10px;
 }
 

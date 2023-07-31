@@ -6,7 +6,7 @@ document.addEventListener('DOMContentLoaded', function () {
             var inputValue = inputTitle.value;
             var xhr = new XMLHttpRequest();
             xhr.open('GET', 'DataProcessing/GetSubtitle?InputTitle=' + encodeURIComponent(inputValue));
-            xhr.onreadystatechange = function () {
+            xhr.onreadystatechange = function requestStatusGetSubtitle () {
                 if (xhr.readyState === 4) {
                     if (xhr.status === 200) {
                         // Обработка успешного ответа от сервера
