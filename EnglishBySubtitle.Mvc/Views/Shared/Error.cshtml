@@ -20,17 +20,17 @@
     @if (!string.IsNullOrEmpty(previousUrl))
     {
         <script>
-            // Вызываем функцию для автоматического перенаправления через 5 секунд
+            // Calling the function for automatic redirection after 5 seconds.
             startCountdown();
-            redirectTo('@previousUrl', 5000); // 5000 миллисекунд = 5 секунд
+            redirectTo('@previousUrl', 5000);
         </script>
     }
     else
     {
         <script>
-            // Вызываем функцию для автоматического перенаправления через 5 секунд
+            // Calling the function for automatic redirection after 5 seconds.
             startCountdown();
-            redirectTo('@previousUrl', 5000); // 5000 миллисекунд = 5 секунд
+            redirectTo('@previousUrl', 5000);
         </script>
     }
 </div>

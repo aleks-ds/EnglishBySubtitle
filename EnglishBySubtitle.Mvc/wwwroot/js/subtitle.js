@@ -5,32 +5,31 @@ function toggleExpandSubtitleField() {
     var wordsField = document.getElementById("words_field");
 
     if (subtitlesField2.style.display === "none") {
-        // Проверяем открыт ли другой блок
         if (wordsField2.style.display === "block") {
             wordsField2.style.display = "none";
             wordsField.textContent = "Show Unique Words";
-            // Удаляем доп класс для стиля линии противоположного diva
+            // Removing the additional class for the style of the line of the opposite div
             wordsField.classList.remove("move_border");
-            // Добавляем доп класс для стиля линии
+            // Adding an additional class for the style of the line.
             subtitlesField.classList.add("move_border");
         }
-        // Перемещаем блок с субтитрами вниз       
+        // Moving the subtitle block down.
         document.getElementById("container").insertBefore(wordsField, subtitlesField);
         document.getElementById("container").appendChild(subtitlesField2);
-        // Открываем блок с субтитрами
+        // Opening the subtitle block.
         subtitlesField2.style.display = "block";
         subtitlesField.textContent = "Hide Subtitle Text"; 
-        // Добавляем доп класс для стиля линии
+        // Adding an additional class for the style of the line.
         subtitlesField.classList.add("move_border"); 
     }
     else {
         subtitlesField2.style.display = "none";
         subtitlesField.textContent = "Show Subtitles Text";       
-        // Перемещаем блок с субтитрами вверх
+        // Moving the subtitle block up.
         document.getElementById("container").insertBefore(subtitlesField, wordsField);
         document.getElementById("container").appendChild(subtitlesField2)
 
-        // Удаляем доп класс для стиля линии противоположного diva
+        // Removing the additional class for the style of the line of the opposite div
         subtitlesField.classList.remove("move_border");
     }
 }
@@ -44,14 +43,14 @@ function toggleExpandWordsField() {
         if (subtitlesField2.style.display === "block") {
             subtitlesField2.style.display = "none";
             subtitlesField.textContent = "Show Subtitles Text"; 
-            // Удаляем доп класс для стиля линии противоположного diva
+            // Removing the additional class for the style of the line of the opposite div
             subtitlesField.classList.remove("move_border");
         }
-        // Добавляем доп класс для стиля линии
+        // Adding an additional class for the style of the line.
         wordsField.classList.add("move_border");
-        // Перемещаем блок с уникальными словами вниз        
+        // Moving the block with unique words down.
         document.getElementById("container").insertBefore(subtitlesField, wordsField);
-        // Перемещаем блок вывода уникальных слов вниз
+        // Moving the block displaying unique words down.
         document.getElementById("container").appendChild(wordsField2);
         wordsField2.style.display = "block";
         wordsField.textContent = "Hide Unique Words";               

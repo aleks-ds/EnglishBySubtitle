@@ -14,7 +14,6 @@ body {
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
-    /*border: 5px solid yellow;*/
 }
 
 footer {
@@ -65,7 +64,7 @@ main {
 }
 
 .logo_link {
-    text-decoration: none; /* Убирает подчеркивание */
+    text-decoration: none;
 }
 
 .search {

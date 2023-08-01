@@ -18,10 +18,11 @@
 
 h1, h2 {
     color: white;
-    text-shadow: -1px -1px 0 black, /* Top-left contour */
-    1px -1px 0 black, /*Top-right contour*/
-    -1px 1px 0 black, /*Bottom-left contour*/
-    1px 1px 0 black; /*Bottom- right contour*/
+    text-shadow:
+    -1px -1px 0 black, /* Top-left contour */
+    1px -1px 0 black,  /*Top-right contour*/
+    -1px 1px 0 black,  /*Bottom-left contour*/
+    1px 1px 0 black;   /*Bottom- right contour*/
 }
 
 .center_content_block {
@@ -39,7 +40,6 @@ h1, h2 {
     margin: 0 0 15px 0;
     background-color: rgba(255, 255, 255, 0.3);
     border: 1px solid black;
-    /*position: relative;*/
     overflow: hidden;
 }
 

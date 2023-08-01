@@ -21,7 +21,6 @@
     width: 100%;
     height: auto;
     border-bottom: 1px solid white;
-    /*border: 3px solid green;*/
 }
 
 .signup_h2 {
@@ -33,7 +32,6 @@
     font-size: 14px;
     width: 100%;
     height: auto;
-    /*border: 3px solid white;*/
 }
 
 .signup_form {
@@ -45,7 +43,6 @@
     flex-grow: 5;
     width: 70%;
     height: auto;
-    /*border: 3px solid green;*/
 }
 
 .signup_input {
@@ -67,14 +64,12 @@
     box-sizing: border-box;
     height: 12%;
     width: 100%;
-    /*border: 3px solid yellow;*/
 }
 
     .signup_password_container input {
         height: 100%;
         width: 100%;
         border-radius: 5px;
-        /*border: 3px solid green;*/
     }
 
 .signup_eye_toggle {
@@ -85,14 +80,12 @@
     justify-content: end;
     height: 100%;
     width: 100%;
-    /*border: 3px solid green;*/
 }
 
 #form_eye_password_toggle {
     position: absolute;
     font-size: 18px;
     padding: 0 10px 0 0;
-    /*border: 1px solid red;*/
 }
 
 
@@ -100,7 +93,6 @@
     margin: 20px 0 20px 0;
     height: auto;
     width: 50%;
-    /*border: 3px solid white;*/
 }
 
     .signup_submit input {

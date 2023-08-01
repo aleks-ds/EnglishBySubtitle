@@ -1,59 +1,59 @@
-﻿// Получаем элементы слайдера
+﻿// Getting slider elements.
 const slider = document.querySelector('.slider');
 const dots = document.querySelectorAll('.dot');
 const headerContainer = document.querySelector('.header_main_conteiner');
 
-// Устанавливаем активный слайд и точку
+// Setting active slide and dot.
 let activeSlide = 0;
 let activeDot = dots[activeSlide];
 let timer;
 
-// Функция для переключения на заданный слайд
+// Function for switching to a specified slide.
 function goToSlide(index) {
-    // Проверяем допустимый индекс слайда
+    // Checking the valid slide index.
     if (index < 0 || index >= dots.length) return;
 
-    // Удаляем активные классы у предыдущего слайда и точки
+    // Removing active classes from the previous slide and dot.
     dots[activeSlide].classList.remove('active');
 
-    // Добавляем активные классы к текущему слайду и точке
+    // Adding active classes to the current slide and dot.
     dots[index].classList.add('active');
 
-    // Обновляем активный слайд и точку
+    // Updating the active slide and dot
     activeSlide = index;
     activeDot = dots[activeSlide];
 
-    // Устанавливаем фоновое изображение для контейнера
+    // Setting the background image for the container.
     headerContainer.style.backgroundImage = `url('/images/slide${index + 1}.jpg')`;
 
-    // Сбрасываем таймер и запускаем новый
+    // Resetting the timer and starting a new one.
     clearInterval(timer);
     timer = setInterval(nextSlide, 5000);
 }
 
-// Функция для переключения на следующий слайд
+// Function for switching to the next slide.
 function nextSlide() {
     const nextSlideIndex = (activeSlide + 1) % dots.length;
     goToSlide(nextSlideIndex);
 }
 
-// Обработчик клика по точке слайдера
+// Slider dot click handler.
 function handleDotClick(event) {
-    // Получаем индекс кликнутой точки
+    // Getting the index of the clicked dot.
     const clickedDot = event.target;
     const index = Array.from(dots).indexOf(clickedDot);
 
-    // Переключаемся на соответствующий слайд
+    // Switching to the corresponding slide
     goToSlide(index);
 }
 
-// Добавляем обработчик клика для каждой точки
+// Adding a click handler for each dot.
 dots.forEach(dot => {
     dot.addEventListener('click', handleDotClick);
 });
 
-// Запускаем слайдер со слайдом 0
+// Starting the slider with slide 0.
 goToSlide(0);
 
-// Запускаем автоматическую смену слайдов
+// Starting automatic slide change.
 timer = setInterval(nextSlide, 5000);

@@ -14,10 +14,11 @@
 
 h1, h2, h3, p {
     color: white;
-    text-shadow: -1px -1px 0 black, /*Top-left contour*/
-    1px -1px 0 black, /*Top-right contour*/
-    -1px 1px 0 black, /*Bottom-left contour*/
-    1px 1px 0 black; /*Bottom- right contour*/
+    text-shadow: 
+    -1px -1px 0 black, /*Top-left contour*/
+    1px -1px 0 black,  /*Top-right contour*/
+    -1px 1px 0 black,  /*Bottom-left contour*/
+    1px 1px 0 black;   /*Bottom- right contour*/
 }
 
 span {

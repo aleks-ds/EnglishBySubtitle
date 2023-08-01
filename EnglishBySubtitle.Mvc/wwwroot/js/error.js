@@ -1,12 +1,12 @@
-// Функция для автоматического перенаправления через заданное время
+// Function for automatic redirection after a specified time.
 function redirectTo(url, delay) {
     setTimeout(function () {
         window.location.href = url;
     }, delay);
 }
-// Функция для обратного отсчета времени
+// Countdown timer function.
 function startCountdown() {
-    var counter = 5; // Измените это значение, если хотите другое время
+    var counter = 5;
     var countdownElement = document.getElementById('countdown');
 
     var countdownInterval = setInterval(function () {

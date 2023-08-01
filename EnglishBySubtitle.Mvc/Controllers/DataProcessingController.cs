@@ -20,7 +20,7 @@ namespace EnglishBySubtitle.Mvc.Controllers
                 getObjectRequest = HandleData.GetObjectRequest(model, ref authorization);
             }
             catch (Exception ex) {
-                // Сохраняем URL предыдущей страницы в TempData
+                // Saving the URL of the previous page in TempData.
                 TempData["PreviousUrl"] = Request.Headers["Referer"].ToString();
 
                 ErrorViewModel errorViewModel = new ErrorViewModel

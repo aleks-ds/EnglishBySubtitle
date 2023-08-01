@@ -9,13 +9,13 @@ document.addEventListener('DOMContentLoaded', function () {
             xhr.onreadystatechange = function requestStatusGetSubtitle () {
                 if (xhr.readyState === 4) {
                     if (xhr.status === 200) {
-                        // Обработка успешного ответа от сервера
+                        // Handling a successful response from the server.
                         var response = xhr.responseText;
                         console.log(response);
-                        // Выполнить перенаправление на новую страницу
+                        // Perform a redirect to a new page.
                         window.location.href = 'DataProcessing/GetSubtitle?InputTitle=' + encodeURIComponent(inputValue);
                     } else {
-                        // Обработка ошибки
+                        // Error handling.
                         console.error('Ошибка запроса: ' + xhr.status);
                     }
                 }

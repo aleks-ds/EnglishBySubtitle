@@ -1,7 +1,6 @@
 ﻿using EnglishBySubtitle.Mvc.Models;
 using Newtonsoft.Json.Linq;
 using RestSharp;
-using System.Net;
 using System.Text.RegularExpressions;
 
 namespace EnglishBySubtitle.Mvc.Services

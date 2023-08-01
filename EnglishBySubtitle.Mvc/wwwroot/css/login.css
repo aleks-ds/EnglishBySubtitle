@@ -20,11 +20,6 @@
     flex-grow: 2;
     width: 100%;
     height: auto;
-    /*border: 3px solid yellow;*/
-}
-
-.form_h1 {
-    /*    border: 3px solid white;*/
 }
 
 .form {
@@ -36,7 +31,6 @@
     flex-grow: 5;
     width: 100%;
     height: auto;
-    /*border: 3px solid black;*/
 }
 
 .form_forgot {
@@ -48,8 +42,6 @@
     width: 74%;
     height: auto;
     margin: 10px 0 0 0;
-    /*border-top: 1px solid black;*/
-    /*border: 3px solid red;*/
 }
 
 .form_text {
@@ -61,13 +53,7 @@
     width: 74%;
     height: auto;
     margin: 0px 0 15px 0;
-    /*border-top: 1px solid black;*/
-    /*border: 3px solid red;*/
 }
-
-
-
-
 
 .form_email {
     display: flex;
@@ -75,7 +61,6 @@
     justify-content: center;
     height: 100%;
     width: 100%;
-    /*border: 3px solid green;*/
 }
 
 .form_password {
@@ -84,8 +69,7 @@
     justify-content: center;
     height: 100%;
     width: 100%;
-    margin: 10px 0 0 0;
-    /*border: 3px solid white;*/
+    margin: 10px 0 0 0;   
 }
 
 .form_remember {
@@ -102,8 +86,7 @@
     justify-content: center;
     height: 80%;
     width: 100%;
-    margin: 40px 0 0 0;
-    /*border: 3px solid green;*/
+    margin: 40px 0 0 0;    
 }
 
 .fields {

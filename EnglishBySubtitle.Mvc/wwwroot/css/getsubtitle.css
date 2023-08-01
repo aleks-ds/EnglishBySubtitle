@@ -1,9 +1,10 @@
 h1, h2 {
     color: white;
-    text-shadow: -1px -1px 0 black, /* Top-left contour */
-    1px -1px 0 black, /*Top-right contour*/
-    -1px 1px 0 black, /*Bottom-left contour*/
-    1px 1px 0 black; /*Bottom- right contour*/
+    text-shadow: 
+    -1px -1px 0 black, /* Top-left contour */
+    1px -1px 0 black,  /*Top-right contour*/
+    -1px 1px 0 black,  /*Bottom-left contour*/
+    1px 1px 0 black;   /*Bottom- right contour*/
 }
 
 .search_result {
@@ -24,8 +25,7 @@ h1, h2 {
     align-items: center;
     flex-direction: column;
     box-sizing: border-box;
-    width: 100%;
-    /*border: 15px solid green;*/
+    width: 100%;    
 }
 
 #search_container_h2_table1 {
@@ -49,8 +49,7 @@ table {
 tr {
     width: 100%;
     height: 100%;
-    border: 1px solid grey;
-    /*border: 3px solid white;*/
+    border: 1px solid grey;    
 }
 
 td {
@@ -60,11 +59,11 @@ td {
     text-overflow: ellipsis;
     max-width: 100%;
     color: white;
-    text-shadow: -1px -1px 0 black, /* Top-left contour */
-    1px -1px 0 black, /*Top-right contour*/
-    -1px 1px 0 black, /*Bottom-left contour*/
-    1px 1px 0 black; /*Bottom- right contour*/
-    /*border: 3px solid green;*/
+    text-shadow: 
+    -1px -1px 0 black, /* Top-left contour */
+    1px -1px 0 black,  /*Top-right contour*/
+    -1px 1px 0 black,  /*Bottom-left contour*/
+    1px 1px 0 black;   /*Bottom- right contour*/    
 }
 
 .td_left {

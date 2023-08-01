@@ -1,9 +1,10 @@
 h1 {
     color: white;
-    text-shadow: -1px -1px 0 black, /* Top-left contour */
-    1px -1px 0 black, /*Top-right contour*/
-    -1px 1px 0 black, /*Bottom-left contour*/
-    1px 1px 0 black; /*Bottom- right contour*/
+    text-shadow: 
+    -1px -1px 0 black, /* Top-left contour */
+    1px -1px 0 black,  /*Top-right contour*/
+    -1px 1px 0 black,  /*Bottom-left contour*/
+    1px 1px 0 black;   /*Bottom- right contour*/
 }
 
 .h1 {
@@ -19,26 +20,12 @@ h1 {
     border: 3px solid yellow;
 }
 
-/*.parent_block {
-    display: flex;
-    align-items: stretch;
-    flex-direction: column;
-    box-sizing: border-box;
-    height: 100%;
-    width: auto;
-    overflow: auto;
-    background-color: rgba(0, 0, 0, 0.4);*/
-/*margin: 100px 200px;*/
-/*border: 2px solid white;
-}*/
-
 .block {
     display: flex;
     align-items: center;
     flex-direction: column;
     box-sizing: border-box;
     width: 100%;
-    /*border: 15px solid green;*/
 }
 
 #id_block1 {
@@ -73,11 +60,11 @@ td {
     text-overflow: ellipsis;
     max-width: 100%;
     color: white;
-    text-shadow: -1px -1px 0 black, /* Top-left contour */
-    1px -1px 0 black, /*Top-right contour*/
-    -1px 1px 0 black, /*Bottom-left contour*/
-    1px 1px 0 black; /*Bottom- right contour*/
-    border: 3px solid green;
+    text-shadow: 
+    -1px -1px 0 black, /* Top-left contour */
+    1px -1px 0 black,  /*Top-right contour*/
+    -1px 1px 0 black,  /*Bottom-left contour*/
+    1px 1px 0 black;   /*Bottom- right contour*/
 }
 
 .td_left {
